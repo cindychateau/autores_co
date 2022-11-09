@@ -2,6 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
+const cookieParser = require('cookie-parser')
+
+//Para usar cookies en la aplicación
+app.use(cookieParser());
+
 //Para usar Json y obtener datos de URL
 app.use( express.json(), express.urlencoded({ extended: true }) );
 
@@ -9,7 +14,8 @@ app.use( express.json(), express.urlencoded({ extended: true }) );
 app.use(
     cors({
         //URL de front end
-        origin: "http://localhost:3000"
+        origin: "http://localhost:3000",
+        credentials: true //Usuario haya iniciado sesión, es decir que tenga credenciales
     }),
 );
 
